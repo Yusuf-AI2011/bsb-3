@@ -1,4 +1,9 @@
 /* GLOBAL USLUBLAR - FUN STYLE */
+/* ✨ YANGLANGAN QISM: Skrollni bartaraf etish uchun BOX-SIZING qo'shildi ✨ */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 :root {
     --primary-color: #ff9a00; /* To'q sariq aksent */
     --secondary-color: #2c3e50; /* To'q ko'k matn */
@@ -14,7 +19,50 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.5;
+    /* ✨ YANGLANGAN QISM: Gorizontal skrollni yashirish ✨ */
+    overflow-x: hidden; 
 }
+
+/* YANGLANGAN QISM: INFO BAR USLUBLARI (Fun Style ga moslangan) */
+#info-bar {
+    width: 100%;
+    /* O'zgacha orqa fon, sarlavhadagi gradient bilan uyg'un */
+    background: #00f2fe;
+    color: var(--secondary-color); /* To'q ko'k matn */
+    padding: 10px 15px;
+    font-size: 1.1em;
+    font-weight: 700;
+    border-bottom: 4px solid var(--primary-color); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    display: flex;
+    justify-content: center; 
+    gap: 30px; 
+    align-items: center;
+    text-transform: uppercase;
+}
+
+#info-bar p {
+    margin: 0; 
+    padding: 0;
+    /* Elementlarni vertikal chiziq bilan ajratish, lekin Fun Style uchun qalinroq chiziq */
+    border-right: 2px solid rgba(0, 0, 0, 0.1); 
+    padding-right: 30px; 
+}
+
+/* Eng oxirgi elementdan chiziqni olib tashlash */
+#info-bar p:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+/* Ism (ikki ism) uchun maxsus stil - asosiy rangda va eng qalin */
+#info-bar p:first-child {
+    font-weight: 900;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+/* YANGLANGAN QISM TUGADI */
 
 /* HEADER USLUBLAR */
 header {
@@ -51,7 +99,7 @@ main {
     margin-bottom: 30px;
     border-radius: 20px;
     box-shadow: var(--shadow);
-    transform: rotateZ(0deg); /* Animatsiya uchun */
+    transform: rotateZ(0deg); 
     transition: transform 0.3s;
 }
 .card:hover {
@@ -193,4 +241,29 @@ footer {
     margin-top: 50px;
     font-size: 1.1em;
     font-weight: 700;
+}
+
+/* Responsive (Mobil moslashuv) */
+@media (max-width: 600px) {
+    #info-bar {
+        flex-direction: column;
+        gap: 5px;
+    }
+    #info-bar p {
+        border-right: none;
+        padding-right: 0;
+    }
+
+    header h1 {
+        font-size: 2.5em;
+    }
+    .card {
+        padding: 15px;
+    }
+    .user-left, .user-right {
+        max-width: 95%;
+    }
+    .social-list {
+        flex-direction: column;
+    }
 }
